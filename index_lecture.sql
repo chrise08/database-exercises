@@ -47,6 +47,16 @@ CREATE TABLE pets (
 
 DESCRIBE pets;
 
+-- add name index
+ALTER TABLE pets
+    ADD INDEX `pet_name_key` (pet_name);
+
+-- drop name index
+ALTER TABLE pets
+    DROP INDEX pet_name_key;
+
+SHOW INDEX FROM pets;
+
 -- ======== UNIQUE INDEX ========
 
 -- create pets with unique name and owner
@@ -124,13 +134,3 @@ VALUES ('Eve', 1, 3);
 
 INSERT INTO pets (pet_name, owner_id, age)
 VALUES ('Wall-e', 9, 3);
-
--- add name index
-ALTER TABLE pets
-ADD INDEX `pet_name_key` (pet_name);
-
--- drop name index
-ALTER TABLE pets
-DROP INDEX pet_name_key;
-
-SHOW INDEX FROM pets;
