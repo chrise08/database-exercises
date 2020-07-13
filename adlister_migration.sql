@@ -1,0 +1,27 @@
+CREATE DATABASE IF NOT EXISTS adlister_db;
+USE adlister_db;
+DROP TABLE IF EXISTS users;
+CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100),
+    password VARCHAR(100) NOT NULL,
+    user_name VARCHAR(100)
+);
+DROP TABLE IF EXISTS ads;
+CREATE TABLE IF NOT EXISTS ads (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100),
+    description VARCHAR(100),
+    user_id INT REFERENCES users(id)
+);
+DROP TABLE IF EXISTS categories;
+CREATE TABLE IF NOT EXISTS categories (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    description VARCHAR(100)
+);
+DROP TABLE IF EXISTS ad_category;
+CREATE TABLE IF NOT EXISTS  ad_category (
+ad_id INT REFERENCES ads(id),
+category_id INT REFERENCES categories(id)
+);
